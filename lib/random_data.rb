@@ -8,6 +8,15 @@ module RandomData
                 sentences.join(" ")
         end
 
+        def self.random_copy
+                sentences = []
+                rand(4..6).times do
+                        sentences << random_sentence
+                end
+
+                sentences.join(" ")
+        end
+
         def self.random_sentence
                 strings = []
                 rand(3..8).times do
@@ -22,5 +31,9 @@ module RandomData
                 letters = ('a'..'z').to_a
                 letters.shuffle!
                 letters[0,rand(3..8)].join
+        end
+
+        def self.random_price
+                numbers = rand(1..100).to_i
         end
 end
