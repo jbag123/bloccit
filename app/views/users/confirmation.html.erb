@@ -1,0 +1,6 @@
+<h2>Sign Up Confirmation</h2>
+
+<h3>Are you sure these values are correct?</h3>
+
+<%= button_to "Yes", {controller: "users", action: "create", params: params}, class: 'btn btn-success' %>
+<%= button_to "No", {controller: "users", action: "new", params: params}, class: 'btn btn-success' %>
