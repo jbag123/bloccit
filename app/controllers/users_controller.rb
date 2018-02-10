@@ -1,7 +1,15 @@
 class UsersController < ApplicationController
-
   def new
     @user = User.new
+  end
+
+  def confirmation
+    @user = User.new
+    @user.name = params[:user][:name]
+    @user.email = params[:user][:email]
+    @user.password = params[:user][:password]
+    @user.password_confirmation = params[:user][:password_confirmation]
+    flash[:notice] = "Name #{@user.name}!"
   end
 
   def create
@@ -19,16 +27,4 @@ class UsersController < ApplicationController
       render :new
     end
   end
-
-  def confirmation
-    @user = User.new
-    @user.name = params[:user][:name]
-    @user.email = params[:user][:email]
-    @user.password = params[:user][:password]
-    @user.password_confirmation = params[:user][:password_confirmation]
-      flash[:notice] = "Welcome to Bloccit #{@user.name}!"
-      redirect_to controller: :users, action: :create, params: params.permit!
-
-  end
-
 end
