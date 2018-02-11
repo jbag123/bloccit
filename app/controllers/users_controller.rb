@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user.email = params[:user][:email]
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
-    flash[:notice] = "Name #{@user.name}!"
+    flash[:notice] = "Please confirm your details: " + @user.name + " " + @user.email
   end
 
   def create
