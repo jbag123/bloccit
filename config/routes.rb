@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   post "users/confirmation" => 'users#confirmation'
 
+  resources :sessions, only: [:new, :create, :destroy]
+
   get 'about' => "welcome#about"
 
   root 'welcome#index'

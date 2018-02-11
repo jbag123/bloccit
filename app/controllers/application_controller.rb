@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_csrf_token, if: :valid_get_request?
+  include SessionsHelper
 
   private
 
@@ -14,4 +15,5 @@ class ApplicationController < ActionController::Base
       secure: false
     }
   end
+  include SessionsHelper
 end
