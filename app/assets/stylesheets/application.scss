@@ -16,3 +16,19 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.nav-tabs ul
+{
+  display: table;
+}
+
+li.sign-in
+{
+  height:45px;
+  display:table-cell;
+  vertical-align : middle;
+}
+
+.avatar
+{
+  padding: 5px;
+}
