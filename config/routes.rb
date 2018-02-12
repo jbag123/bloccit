@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     resources :posts, except: [:index]
   end
 
-  resources :users, only: [:new, :create]
-
-  post "users/confirmation" => 'users#confirmation'
+  resources :users, only: [:new, :create] do
+    post :confirmation, on: :collection
+  end
 
   get 'about' => "welcome#about"
 
