@@ -1,19 +1,15 @@
 class ApplicationController < ActionController::Base
-  before_action :set_csrf_token, if: :valid_get_request?
+  protect_from_forgery with: :exception
   include SessionsHelper
 
   private
-
-  def valid_get_request?
-    protect_against_forgery? && !request.xhr? && request.get?
-  end
-
-  def set_csrf_token
-    cookies[:csrf_token] = {
-      value: form_authenticity_token,
-      expires: 5.minutes.from_now,
-      secure: false
-    }
+# #10
+  def require_sign_in
+    unless current_user
+      flash[:alert] = "You must be logged in to do that"
+# #11
+      redirect_to new_session_path
+    end
   end
   include SessionsHelper
 end
