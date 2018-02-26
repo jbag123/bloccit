@@ -10,6 +10,7 @@ require 'rails_helper'
     let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
     let(:post) { topic.posts.create!(title: title, body: body, user: user ) }
 
+    it { is_expected.to have_many(:comments) }
     it { is_expected.to belong_to(:topic) }
     it { is_expected.to belong_to(:user) }
 
