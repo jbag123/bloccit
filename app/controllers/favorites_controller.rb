@@ -11,7 +11,6 @@ class FavoritesController < ApplicationController
       flash[:alert] = "Favoriting failed."
     end
     redirect_to [post.topic, post]
-    end
   end
   def destroy
     post = Post.find(params[:post_id])
