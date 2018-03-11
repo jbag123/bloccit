@@ -10,15 +10,15 @@ gem 'rails', '~> 5.1.2'
 
 # #1
 group :production do
-        # Use pg as the production database for Active Record
-        gem 'pg'
-        gem 'rails_12factor'
+  # Use pg as the production database for Active Record
+  gem 'pg'
+  gem 'rails_12factor'
 end
 
 # #2
 group :development do
-        # Use sqlite3 as the development database for Active Record
-        gem 'sqlite3'
+  # Use sqlite3 as the development database for Active Record
+  gem 'sqlite3'
 end
 
 # Use Puma as the app server
@@ -42,7 +42,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'thor', '0.19.1'
 
 group :development do
-        gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.0.5'
 end
 
 # Add rspec
@@ -50,6 +50,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'rails-controller-testing'
   gem 'shoulda'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 # Add bootstrap
