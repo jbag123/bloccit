@@ -11,8 +11,21 @@
       <div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
-          <%= pluralize(@user.posts.count, 'post') %>,
-          <%= pluralize(@user.comments.count, 'comment') %>
+          <% if posts_for_a_user(@user) %>
+            <%= pluralize(@user.posts.count, 'post') %>,
+          <% else %>
+            <%= @user.name %> does not have posts
+          <% end %>
+          <% if comments_for_a_user(@user) %>
+            <%= pluralize(@user.comments.count, 'comment') %>
+          <% else %>
+          <%= @user.name %> does not have comments
+          <% end %>
+          <% if favorites_for_a_user(@user) %>
+            <%= pluralize(@user.favorites.count, 'favorites') %>
+          <% else %>
+          <%= @user.name %> does not have favorites
+          <% end %>
         </small>
       </div>
     </div>

@@ -83,4 +83,16 @@ RSpec.describe UsersController, type: :controller do
       expect(assigns(:user)).to eq(factory_user)
     end
   end
+
+  describe "the number of votes and comments in user show view" do
+    it "increases number of votes in show view" do
+      assert_select 'media-heading span', ''
+    end
+
+    it "increases number of comments in show view" do
+      assert_select @user.favorite do
+        assert_select @user.favorite.count + 1
+      end
+    end
+  end
 end
