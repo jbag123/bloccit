@@ -11,17 +11,17 @@
       <div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
-          <% if posts_for_a_user(@user) %>
+          <% if user_has_posts?(@user) %>
             <%= pluralize(@user.posts.count, 'post') %>,
           <% else %>
             <%= @user.name %> does not have posts
           <% end %>
-          <% if comments_for_a_user(@user) %>
+          <% if user_has_comments?(@user) %>
             <%= pluralize(@user.comments.count, 'comment') %>
           <% else %>
           <%= @user.name %> does not have comments
           <% end %>
-          <% if favorites_for_a_user(@user) %>
+          <% if user_has_favorites?(@user) %>
             <%= pluralize(@user.favorites.count, 'favorites') %>
           <% else %>
           <%= @user.name %> does not have favorites
@@ -37,5 +37,13 @@
 <h2>Comments</h2>
 <%= render @user.comments %>
 
-<h2>Comments</h2>
-<%= render partial: "favorites/favorite" %>
+<h2>Favorites</h2>
+<% @favorited_posts.each do |fav| %>
+  <figure class="figure">
+  <%= image_tag fav.user.avatar_url(128), class: 'figure-img img-fluid rounded' %>
+  <figcaption class="figure-caption text-left h5">Post title: <%= fav.title %></figcaption>
+  <figcaption class="figure-caption text-left h6">Post points: <%= fav.points %></figcaption>
+  <figcaption class="figure-caption text-left h6">Number of comments: <%= fav.comments.count  %></figcaption>
+  <figcaption class="figure-caption text-left h6">Post author email: <%= fav.user.email  %></figcaption>
+</figure>
+<% end %>
